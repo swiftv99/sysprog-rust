@@ -101,10 +101,10 @@ impl Shape for Rectangle {
     \begin{itemize}
         \item Using trait bounds:
         \begin{lstlisting}[language=rust]
-fn sum<T: AddAssign + Copy + Default>(nums: &Vec<T>) -> T {
-    let mut sum = T::default();
-    for n in nums { sum += *n; }
-    sum
+fn to_vec<T: Clone>(slice: &[T]) -> Vec<T> {
+    let mut vec = Vec::new();
+    for e in slice { vec.push(e.clone()); }
+    vec
 }
         \end{lstlisting}
 
