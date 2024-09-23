@@ -127,21 +127,7 @@ fn foo() {
 
     \begin{overlayarea}{\linewidth}{10cm}
 
-    \onslide<1->{
-    \begin{center}
-    \begin{tabular}{ p{1.5cm}|p{4cm}|p{8cm} }
-     & \textbf{Implementer} & \textbf{Consumer} \\
-     \hline
-     \texttt{FnOnce} & Move out \closgood{}; Mutate \closgood{} & Can call only once \\
-     \hline
-     \texttt{FnMut} & Move out \closbad{}; Mutate \closgood{} & Can call multiple times with unique access \\
-     \hline
-     \texttt{Fn} & Move out \closbad{}; Mutate \closbad{} & Can call multiple times, no restrictions \\
-    \end{tabular}
-    \end{center}
-    }
-
-    \begin{onlyenv}<2>
+    \begin{onlyenv}<1-2>
     \begin{exampleblock}{Example}
     \begin{lstlisting}[language=rust]
 fn count<F: ...>(elems: &[u32], func: F) -> usize {
@@ -164,6 +150,20 @@ fn count<F: FnMut(&u32) -> bool>(elems: &[u32], mut func: F) -> usize {
     \end{lstlisting}
     \end{exampleblock}
     \end{onlyenv}
+
+    \onslide<2->{
+    \begin{center}
+    \begin{tabular}{ p{1.5cm}|p{4cm}|p{8cm} }
+     & \textbf{Implementer} & \textbf{Consumer} \\
+     \hline
+     \texttt{FnOnce} & Move out \closgood{}; Mutate \closgood{} & Can call only once \\
+     \hline
+     \texttt{FnMut} & Move out \closbad{}; Mutate \closgood{} & Can call multiple times with unique access \\
+     \hline
+     \texttt{Fn} & Move out \closbad{}; Mutate \closbad{} & Can call multiple times, no restrictions \\
+    \end{tabular}
+    \end{center}
+    }
 
     \end{overlayarea}
 \end{frame}
